@@ -1,0 +1,2007 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>PMB UNIVERSITAS POTENSI UTAMA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- panggil bootstrap css sama font awesome buat icon -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- load jquery ama js bootstrap (diperlukan HANYA agar slider/carousel & accordion FAQ bawaan bootstrap bisa diklik) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+/* settingan dasar body */
+body {
+margin: 0; 
+padding: 0;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+background-color: #ffffff;
+overflow-x: hidden;
+}
+
+/* judul buat tiap section biar seragam */
+.section-title { 
+text-align: center; 
+color: #022349; 
+font-weight: bold; 
+margin-top: 50px; 
+margin-bottom: 35px; 
+text-transform: uppercase; 
+letter-spacing: 1px; 
+}
+
+/* --- Bagian Menu Atas / Navbar --- */
+.header-wrapper {
+position: relative;
+width: 99,5%;
+z-index: 9999;
+}
+/* baris kecil warna merah diatas navbar utama */
+.baris-merah {
+height: 40px;
+background-color: #d82400;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+padding: 0 5%;
+}
+.sub-menu {
+display: flex;
+gap: 25px;
+list-style: none;
+margin: 0; 
+padding: 0;
+}
+.sub-menu a {
+color: #ffffff;
+text-decoration: none;
+font-size: 13px;
+font-weight: 600;
+}
+.sub-menu a:hover { 
+opacity: 0.8; 
+}
+
+/* wadah utama buat navbar biru */
+.baris-biru-container {
+position: relative;
+background-color: #022349;
+height: 90px;
+padding: 0 3%;
+}
+.main-navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 100%;
+width: 100%;
+}
+.nav-sisi-kiri, .nav-sisi-kanan {
+display: flex;
+align-items: center;
+gap: 35px;
+width: 42%;
+}
+.nav-sisi-kiri { justify-content: flex-start; }
+.nav-sisi-kanan { justify-content: flex-end; }
+
+/* style buat link menu nav */
+.main-navbar a.menu-link {
+color: #ffffff;
+font-size: 16px;
+font-weight: bold;
+text-decoration: none;
+padding-bottom: 5px;
+position: relative;
+transition: color 0.3s;
+}
+.main-navbar a.menu-link:hover { 
+color: #ffd000; 
+}
+/* efek garis bawah pas di hover */
+.main-navbar a.menu-link::after {
+content: "";
+position: absolute;
+bottom: 0; 
+left: 0;
+width: 0%; 
+height: 3px;
+background-color: #ffd000;
+transition: width 0.3s ease;
+}
+.main-navbar a.menu-link:hover::after,
+.main-navbar a.menu-link.active::after {
+width: 100%;
+}
+
+/* tombol pendaftaran warna oranye */
+.btn-pendaftaran {
+background-color: #f39c12 !important;
+color: #022349 !important;
+font-weight: bold !important;
+font-size: 15px !important;
+padding: 10px 22px !important;
+border-radius: 6px;
+text-decoration: none;
+transition: background 0.3s, transform 0.2s;
+border: none;
+}
+.btn-pendaftaran:hover {
+background-color: #e67e22 !important;
+transform: scale(1.05);
+color: #ffffff !important;
+}
+
+/* tempat naruh logo bulet ditengah */
+.logo-center-wrapper {
+position: absolute;
+left: 50%; 
+top: -20px;
+transform: translateX(-50%);
+z-index: 10000;
+}
+.logo-frame {
+width: 125px; 
+height: 125px;
+border-radius: 50%;
+background-color: #d82400;
+border: 5px solid #d82400;
+overflow: hidden;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.logo-frame img { 
+width: 90%; 
+height: 90%; 
+object-fit: contain; 
+}
+
+/* --- Bagian Jumbotron Slider (Carousel) --- */
+#carouselPMB {
+position: relative;
+width: 100%;
+background-color: #022349;
+overflow: hidden;
+}
+#carouselPMB .carousel-inner { 
+width: 100vw; 
+overflow: visible; 
+}
+#carouselPMB .item {
+width: 100vw; 
+height: 600px;
+}
+#carouselPMB img { 
+width: 100%; 
+height: 100%; 
+object-fit: cover; 
+filter: brightness(40%); /* bikin gambar rada gelap biar teks kebaca */
+}
+
+/* css buat text banner yang posisinya diem ga ikut kegeser */
+.hero-caption-container {
+position: absolute;
+top: 0; 
+left: 0;
+width: 100%; 
+height: 100%;
+z-index: 10;
+pointer-events: none;
+}
+.hero-caption-container .container { 
+position: relative; 
+height: 100%; 
+}
+.hero-caption-content{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:100%;
+max-width:850px;
+pointer-events:auto;
+}
+
+.hero-caption-content h1{
+font-size:72px;
+font-weight:800;
+color:#fff;
+line-height:1.15;
+}
+
+.hero-line{
+width:100px;
+height:4px;
+background:#f39c12;
+margin:25px auto;
+border-radius:50px;
+}
+
+.hero-caption-content p{
+font-size:22px;
+color:#fff;
+line-height:34px;
+margin-bottom:40px;
+}
+.btn-slide-primary {
+font-weight: bold; 
+padding: 12px 25px; 
+border-radius: 4px; 
+background-color: #d82400; 
+border: none; 
+color: #fff;
+}
+.btn-slide-secondary {
+font-weight: bold; 
+padding: 12px 25px; 
+border-radius: 4px; 
+background: transparent; 
+color: #fff; 
+border: 2px solid #fff; 
+margin-left: 10px;
+}
+.hero-line{
+width:90px;
+height:4px;
+background:#f39c12;
+margin:25px auto;
+border-radius:50px;
+}
+
+.hero-caption-content h1{
+font-size:68px;
+font-weight:800;
+color:#fff;
+line-height:1.15;
+margin:20px 0;
+text-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+
+.hero-caption-content p{
+font-size:22px;
+color:#fff;
+line-height:34px;
+margin:30px auto 45px;
+max-width:700px;
+text-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+
+.hero-btn .btn{
+padding:15px 35px;
+border-radius:50px;
+font-size:17px;
+font-weight:700;
+}
+
+.badge-tahun{
+display:inline-block;
+padding:10px 25px;
+border-radius:50px;
+background:rgba(243,156,18,.95);
+color:#fff;
+font-size:14px;
+font-weight:700;
+letter-spacing:1px;
+}
+/* panah kanan kiri slider */
+.carousel-control { 
+width: 5% !important; 
+background: none !important; 
+opacity: 0.7; 
+z-index: 20; 
+}
+.carousel-control:hover { 
+opacity: 1; 
+}
+.carousel-control .glyphicon {
+position: absolute; 
+top: 50%;
+transform: translateY(-50%);
+font-size: 24px; 
+color: #ffffff; 
+margin: 0;
+}
+.carousel-control.left .glyphicon { left: 25px; }
+.carousel-control.right .glyphicon { right: 25px; }
+.carousel-indicators { 
+bottom: 30px; 
+z-index: 25; 
+}
+
+
+#campus-number{
+
+background:#ffffff;
+
+padding:40px 0;
+
+}
+
+.number-box{
+
+background:#022349;
+
+border-radius:15px;
+
+padding:25px 10px;
+
+text-align:center;
+
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+transition:.3s;
+
+
+
+}
+
+.number-box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.number-box i{
+
+font-size:28px;
+
+color:#f39c12;
+
+margin-bottom:10px;
+
+}
+
+.number-box h3{
+
+font-size:30px;
+
+font-weight:700;
+
+color:#f6f8fb;
+
+margin:8px 0;
+
+}
+
+.number-box p{
+
+font-size:14px;
+
+color:#ffffff;
+
+margin:0;
+
+}
+/* --- Seksi Profil Singkat / Tentang Kami --- */
+.tentang-kami-section {
+padding: 80px 0;
+background-color: #f8f9fa;
+}
+.tentang-sub {
+font-size: 14px;
+font-weight: bold;
+color: #f39c12;
+text-transform: uppercase;
+letter-spacing: 2px;
+margin-bottom: 5px;
+display: block;
+}
+.tentang-title {
+color: #022349;
+font-size: 36px;
+font-weight: 800;
+margin-top: 0;
+margin-bottom: 20px;
+position: relative;
+padding-bottom: 15px;
+}
+.tentang-title::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100px;
+height: 4px;
+background-color: #d82400;
+border-radius: 2px;
+}
+.tentang-deskripsi {
+font-size: 16px;
+color: #555555;
+line-height: 1.8;
+text-align: justify;
+margin-bottom: 30px;
+}
+
+/* kotak info pendiri */
+.founder-card {
+display: flex;
+align-items: center;
+gap: 15px;
+background: #ffffff;
+padding: 15px 25px;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+display: inline-flex;
+border-left: 4px solid #022349;
+}
+.founder-img {
+width: 55px;
+height: 55px;
+border-radius: 50%;
+object-fit: cover;
+border: 2px solid #f39c12;
+}
+.founder-info h5 {
+margin: 0;
+font-size: 16px;
+font-weight: bold;
+color: #022349;
+}
+.founder-info span {
+font-size: 12px;
+color: #f39c12;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+/* frame foto gedung sebelah kanan */
+.tentang-image-wrapper {
+position: relative;
+padding: 10px;
+}
+.tentang-image-wrapper::before {
+content: "";
+position: absolute;
+top: 0; 
+right: 0; 
+width: 80%; 
+height: 80%;
+border: 6px solid #ffd000;
+border-radius: 8px;
+z-index: 1;
+}
+.img-kampas-baru {
+width: 100%;
+border-radius: 8px;
+box-shadow: 0 10px 30px rgba(2, 35, 73, 0.15);
+position: relative;
+z-index: 2;
+transition: transform 0.3s ease;
+}
+.img-kampas-baru:hover {
+transform: scale(1.02);
+}
+/*=============================
+PROGRAM STUDI
+==============================*/
+
+#program-studi{
+
+background:#022349;
+
+}
+.section-title{
+max-width: 700px;
+margin: auto;
+}
+
+.section-subtitle{
+display: inline-block;
+color: #dde7f1;
+font-size: 30px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+margin-bottom: 15px;
+}
+
+.main-title{
+font-size: 58px;
+font-weight: 800;
+line-height: 1.2;
+color: #ffffff;
+margin-bottom: 20px;
+}
+
+.main-title span{
+color: #ffc107;
+}
+
+.title-line{
+width: 90px;
+height: 5px;
+background: #ffffff;
+border-radius: 50px;
+margin: 20px auto 30px;
+}
+
+.section-desc{
+font-size: 18px;
+color: #6c757d;
+line-height: 32px;
+max-width: 720px;
+margin: auto;
+}
+
+@media (max-width:768px){
+
+.main-title{
+font-size: 40px;
+}
+
+.section-desc{
+font-size:16px;
+line-height:28px;
+}
+
+}
+/*==========================
+FAKULTAS
+===========================*/
+
+#fakultas{
+    background:#022349;
+    padding:110px 0;
+}
+
+.fakultas-subtitle{
+    color:#f39c12;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.fakultas-title{
+    color:#fff;
+    font-size:52px;
+    font-weight:800;
+    margin:15px 0;
+}
+
+.fakultas-desc{
+    color:#d9e6f5;
+    max-width:700px;
+    margin:auto;
+    font-size:18px;
+    line-height:30px;
+}
+
+.fakultas-line{
+    width:90px;
+    height:4px;
+    background:#f39c12;
+    margin:30px auto 50px;
+    border-radius:50px;
+}
+
+.fakultas-card{
+    background:#fff;
+    border-radius:18px;
+    padding:40px 25px;
+    text-align:center;
+    transition:.35s;
+    margin-bottom:30px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.fakultas-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+.fakultas-icon{
+    font-size:58px;
+    color:#f39c12;
+    margin-bottom:25px;
+    transition:.3s;
+}
+
+.fakultas-card:hover .fakultas-icon{
+    transform:scale(1.2);
+}
+
+.fakultas-card h4{
+    color:#022349;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.fakultas-card p{
+    color:#777;
+    line-height:26px;
+    min-height:75px;
+}
+
+.fakultas-link{
+    color:#022349;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.fakultas-link:hover{
+    color:#d82400;
+    text-decoration:none;
+}
+
+.btn-fakultas{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 40px;
+    background:#f39c12;
+    color:#fff;
+    font-weight:bold;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.btn-fakultas:hover{
+    background:#d82400;
+    color:#fff;
+    text-decoration:none;
+}
+
+
+
+.btn-lihat{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+text-decoration:none;
+
+padding:14px 35px;
+
+border-radius:50px;
+
+background:#0d6efd;
+
+color:white;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.btn-lihat:hover{
+
+color:white;
+
+background:#084298;
+
+}
+
+.btn-lihat i{
+
+transition:.3s;
+
+}
+
+.btn-lihat:hover i{
+
+transform:translateX(6px);
+
+}
+.btn-brosur{
+
+display:inline-block;
+
+padding:16px 45px;
+
+background:#022349;
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:700;
+
+border-radius:50px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.btn-brosur:hover{
+
+background:#d82400;
+
+color:#fff;
+
+text-decoration:none;
+
+}
+
+.btn-brosur i{
+
+margin-left:10px;
+
+transition:.3s;
+
+}
+
+.btn-brosur:hover i{
+
+transform:translateX(6px);
+
+}
+/*=========================
+FASILITAS
+=========================*/
+#fasilitas{
+
+background:#022349;
+
+padding:100px 0;
+
+}
+.fasilitas-card{
+
+background:#022340;
+
+border-radius:10px;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+transition:.35s;
+
+margin-bottom:10px;
+
+}
+
+.fasilitas-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.fasilitas-card img{
+
+width:100%;
+
+height:230px;
+
+
+
+transition:.4s;
+
+}
+
+.fasilitas-card:hover img{
+
+transform:scale(1);
+
+}
+
+.fasilitas-body{
+
+padding:22px;
+
+text-align:center;
+
+}
+
+.fasilitas-body h4{
+
+color:#ffffff;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+.fasilitas-body p{
+
+color:#fffcfc;
+
+line-height:26px;
+
+margin:0;
+
+}
+
+/* --- Bagian Pertanyaan / FAQ Collapse --- */
+#faq{
+
+background:#f8f9fc;
+
+padding:100px 0;
+
+}
+
+.panel-upu{
+
+border:none;
+
+border-radius:15px;
+
+overflow:hidden;
+
+margin-bottom:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.panel-upu .panel-heading{
+
+background:#ffffff !important;
+
+padding:22px;
+
+}
+
+.panel-upu .panel-title a{
+
+display:block;
+
+color:#022349;
+
+font-size:18px;
+
+font-weight:700;
+
+text-decoration:none;
+
+}
+
+.panel-upu .panel-title i{
+
+color:#0d6efd;
+
+margin-right:12px;
+
+}
+
+.panel-upu .panel-body{
+
+background:#ffffff;
+
+color:#000000;
+
+line-height:30px;
+
+font-size:15px;
+
+border-top:1px solid #eee;
+
+}
+/*
+FOOTER
+*/
+
+.footer-upu{
+
+background:#011b3d;
+
+color:#d9e6f5;
+
+padding:70px 0 25px;
+
+}
+
+.footer-logo{
+
+width:80px;
+
+margin-bottom:20px;
+
+}
+
+.footer-upu h3{
+
+color:#fff;
+
+font-weight:700;
+
+margin-bottom:15px;
+
+}
+
+.footer-upu h4{
+
+color:#fff;
+
+margin-bottom:20px;
+
+font-weight:700;
+
+}
+
+.footer-upu p{
+
+color:#c8d6e5;
+
+line-height:28px;
+
+}
+
+.footer-upu ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+.footer-upu ul li{
+
+margin-bottom:12px;
+
+}
+
+.footer-upu ul li a{
+
+color:#c8d6e5;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.footer-upu ul li a:hover{
+
+color:#ffc107;
+
+padding-left:8px;
+
+}
+
+.footer-social{
+
+margin-top:20px;
+
+}
+
+.footer-social a{
+
+display:inline-flex;
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(255,255,255,.08);
+
+color:#fff;
+
+margin-right:10px;
+
+transition:.3s;
+
+font-size:18px;
+
+}
+
+.footer-social a:hover{
+
+background:#ffc107;
+
+color:#022349;
+
+}
+
+.footer-upu hr{
+
+border-color:rgba(255,255,255,.1);
+
+margin:45px 0 20px;
+
+}
+
+.footer-copy{
+
+color:#b8c8d8;
+
+font-size:14px;
+
+}
+/* GLOBAL WEBSITE LAYOUT */
+.container{
+width:95% !important;
+max-width:1450px;
+}
+section{
+padding:100px 0;
+}
+#carouselPMB .item{
+height:720px;
+}
+.hero-caption-content{
+max-width:700px;
+}
+.hero-caption-content h1{
+font-size:78px;
+line-height:1.05;
+}
+.hero-caption-content p{
+font-size:22px;
+line-height:36px;
+margin-top:25px;
+margin-bottom:40px;
+}
+.baris-biru-container{
+height:100px;
+padding:0 5%;
+}
+.tentang-kami-section{
+padding:120px 0;
+}
+#program-studi{
+padding:120px 0;
+}
+#akses-cepat{
+padding-top:100px;
+padding-bottom:100px;
+}
+.container-faq{
+padding-top:80px;
+padding-bottom:80px;
+}
+footer{
+padding-top:80px;
+padding-bottom:30px;
+}
+.row{
+margin-top:20px;
+margin-bottom:20px;
+}
+.card-akses,
+.prodi-card,
+.founder-card{
+border-radius:20px;
+}
+.section-title{
+margin-bottom:70px !important;
+}
+.img-kampas-baru{
+width:100%;
+height:600px;
+object-fit:cover;
+border-radius:20px;
+}
+.prodi-card img{
+height:320px;
+}
+.prodi-row{
+margin-top:40px;
+}
+.prodi-row>[class*="col-"]{
+margin-bottom:35px;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- Bagian Header Navigasi -->
+
+<header class="header-wrapper">
+<!-- sub menu kecil bagian atas -->
+<div class="baris-merah">
+<ul class="sub-menu">
+<li><a href="#"></a></li>
+
+</ul>
+</div>
+
+<!-- navbar utama warna biru -->
+
+<div class="baris-biru-container">
+<!-- Logo ditengah-tengah navbar -->
+<div class="logo-center-wrapper">
+<div class="logo-frame">
+<img src="pu.PNG" alt="Logo UPU">
+</div>
+</div>
+
+<div class="main-navbar">
+<!-- Menu bagian kiri -->
+<div class="nav-sisi-kiri">
+<a href="#carouselPMB" class="menu-link active">Beranda</a>
+<a></a>
+<a href="#profil-pmb" class="menu-link">Profil PMB</a>
+<a></a>
+<a href="home.html" class="menu-link">Program Studi</a>
+</div>
+<!-- Menu bagian kanan -->
+<div class="nav-sisi-kanan">
+<a href="#brosur" class="menu-link">Jadwal PMB</a>
+<a></a> 
+<a href="#faq" class="menu-link">FAQ</a>
+<a></a>
+<a href="home.html" class="btn-pendaftaran"><i class="fa fa-user-plus"></i> PENDAFTARAN</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Bagian Banner Slide (Carousel) -->
+<div id="carouselPMB" class="carousel slide" data-ride="carousel" data-interval="4000">
+
+<!-- Dot bullet bunder di bawah slider -->
+<ol class="carousel-indicators">
+<li data-target="#carouselPMB" data-slide-to="0" class="active"></li>
+<li data-target="#carouselPMB" data-slide-to="1"></li>
+</ol>
+
+<!-- List Gambar Slide -->
+<div class="carousel-inner">
+<div class="item active">
+<img src="gedung-upu-2.jpg" alt="Gedung Kampus">
+</div>
+<div class="item">
+<img src="aula-upu-2.jpg" alt="Aula Kampus">
+</div>
+</div>
+
+<!-- Teks caption yang tetep diam di tempat -->
+
+<div class="hero-caption-content">
+
+<span class="badge-tahun">
+PENERIMAAN MAHASISWA BARU 2026 / 2027
+</span>
+
+<h1>
+UNIVERSITAS<br>
+POTENSI UTAMA
+</h1>
+
+<div class="hero-line"></div>
+
+<p>
+Membangun Generasi Unggul, Inovatif,<br>
+dan Siap Bersaing di Era Digital.
+</p>
+
+<div class="hero-btn">
+<a href="home.html" class="btn btn-slide-primary">
+<i class="fa fa-paper-plane"></i> Daftar Sekarang
+</a>
+
+<a href="home.html" class="btn btn-slide-secondary">
+<i class="fa fa-download"></i> Download Brosur
+</a>
+</div>
+
+</div>
+
+<!-- Tombol panah next prev slider --> 
+<a class="left carousel-control" href="#carouselPMB" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#carouselPMB" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+
+</div>
+<!-- UNIVERSITAS ANGKA -->
+
+<section id="campus-number">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3 col-sm-6">
+
+<div class="number-box">
+
+<i class="fa fa-university"></i>
+
+<h2 style="color: white;">6</h2>
+
+<p style="color: white;">Fakultas</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3 col-sm-6">
+
+<div class="number-box">
+
+<i class="fa fa-book"></i>
+
+<h2 style="color: white;">14</h2>
+
+<p style="color: white;">Program Studi</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3 col-sm-6">
+
+<div class="number-box">
+
+<i class="fa fa-users"></i>
+
+<h2 style="color: white;">27605</h2>
+
+<p style="color: white;">Mahasiswa</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3 col-sm-6">
+
+<div class="number-box">
+
+<i class="fa fa-handshake-o"></i>
+
+<h2 style="color: white;">385</h2>
+
+<p style="color: white;">Tenaga Pengajar</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- Bagian Tentang Universitas Potensi Utama -->
+<div class="tentang-kami-section" id="profil-pmb">
+<div class="container">
+<div  style="display: flex; align-items: center; flex-wrap: wrap;">
+
+<!-- Kolom teks sejarah singkat -->
+<div class="col-md-6" style="margin-bottom: 30px;">
+<span class="tentang-sub">Tentang Kami</span>
+<h2 class="tentang-title">Sejak 1994.</h2>
+<p class="tentang-deskripsi">
+Universitas Potensi Utama merupakan salah satu Perguruan Tinggi Swasta (PTS) di bawah naungan Yayasan Potensi Utama Medan. Universitas Potensi Utama bermula dari Kursus Komputer dan Bahasa Inggris pada tahun 1994 dengan nama PLSM (Pendidikan Luar Sekolah Masyarakat) Potensi Utama. 
+</p>
+<p class="tentang-deskripsi">
+Pada tahun 2003, berdasarkan izin dari Direktorat Jenderal Pendidikan Tinggi (DIKTI), PLSM Potensi Utama berhasil meningkatkan statusnya menjadi STMIK (Sekolah Tinggi Manajemen Informatika dan Komputer) Potensi Utama, hingga kini bertransformasi menjadi Universitas yang unggul dalam industri kreatif dan teknologi digital.
+</p>
+
+<!-- Box Founder -->
+<div class="founder-card">
+<img src="ibu.png" alt="Hj. Nuriandy" class="founder-img"> 
+<div class="founder-info">
+<h5>Hj. Nuriandy, BA</h5>
+<span>Founder</span>
+</div>
+</div>
+</div>
+
+<!-- Kolom foto gedung -->
+<div class="col-md-6">
+<div class="tentang-image-wrapper">
+<img src="gedung-upu-2.jpg" alt="Gedung UPU" class="img-kampas-baru">
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<section id="fakultas">
+
+<div class="container">
+
+<div class="text-center">
+
+<span class="fakultas-subtitle">
+FAKULTAS
+</span>
+
+<h2 class="fakultas-title">
+Jelajahi Fakultas Universitas Potensi Utama
+</h2>
+
+<div class="fakultas-line"></div>
+
+<p class="fakultas-desc">
+Universitas Potensi Utama memiliki berbagai fakultas yang siap
+mendukung pengembangan ilmu pengetahuan, teknologi, seni,
+bisnis, kesehatan, dan pendidikan.
+</p>
+
+</div>
+
+<br><br>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-laptop fakultas-icon"></i>
+
+<h4>Fakultas Ilmu Komputer</h4>
+
+<p>
+Menghasilkan lulusan yang unggul dalam teknologi informasi,
+kecerdasan buatan, dan pengembangan perangkat lunak.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-line-chart fakultas-icon"></i>
+
+<h4>Fakultas Ekonomi & Bisnis</h4>
+
+<p>
+Mencetak lulusan yang profesional dalam bidang bisnis,
+manajemen, kewirausahaan, dan ekonomi digital.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-balance-scale fakultas-icon"></i>
+
+<h4>Fakultas Hukum</h4>
+
+<p>
+Mengembangkan lulusan yang berintegritas,
+berwawasan hukum, dan siap menghadapi tantangan global.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-paint-brush fakultas-icon"></i>
+
+<h4>Fakultas Seni & Desain</h4>
+
+<p>
+Mendorong kreativitas mahasiswa dalam bidang seni,
+desain, multimedia, dan industri kreatif.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-heartbeat fakultas-icon"></i>
+
+<h4>Fakultas Kesehatan</h4>
+
+<p>
+Menyiapkan tenaga kesehatan yang profesional,
+kompeten, dan berorientasi pada pelayanan masyarakat.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="fakultas-card">
+
+<i class="fa fa-graduation-cap fakultas-icon"></i>
+
+<h4>Fakultas Keguruan & Ilmu Pendidikan</h4>
+
+<p>
+Mencetak pendidik yang inovatif, profesional,
+dan mampu menjawab tantangan dunia pendidikan.
+</p>
+
+<a href="#" class="fakultas-link">
+Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<a href="home.html" class="btn-fakultas">
+    JELAJAHI SEMUA FAKULTAS
+    <i class="fa fa-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+</section>
+<!-- BROSUR PMB -->
+
+<section id="brosur" style="padding:90px 0;background:#f8f9fc;">
+
+<div class="container">
+
+<div class="text-center">
+
+<h2 style="
+font-size:48px;
+font-weight:800;
+color:#022349;
+margin-top:10px;">
+BROSUR
+<span style="color:#f39c12;">Penerimaan Mahasiswa Baru</span>
+</h2>
+
+<div class="title-line" style="background:#022349;"></div>
+
+<p style="
+max-width:700px;
+margin:auto;
+color:#666;
+font-size:18px;
+line-height:32px;">
+
+Dapatkan informasi lengkap mengenai jalur pendaftaran,
+biaya kuliah, program studi, serta berbagai beasiswa
+Universitas Potensi Utama.
+
+</p>
+
+</div>
+
+<br><br>
+
+<div class="row">
+
+<!-- Brosur 1 -->
+
+<div class="col-md-6">
+
+<div class="brosur-card">
+
+<img src="bro.jpeg" class="img-responsive">
+
+<div class="brosur-content">
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Brosur 2 -->
+
+<div class="col-md-6">
+
+<div class="brosur-card">
+
+<img src="bro2.jpeg" class="img-responsive">
+
+<div class="brosur-content">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="text-center" style="margin-top:50px;">
+
+<a href="home.html#brosur" class="btn-brosur">
+
+Lihat Informasi Lengkap
+<i class="fa fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+</section>
+<section id="fasilitas">
+
+<div class="container">
+
+<div class="section-title text-center">
+
+
+<h2 class="main-title">
+FASILITAS
+<span>KAMPUS</span>
+</h2>
+
+<div class="title-line"></div>
+
+<p class="section-desc" style="color:#ffffff;">
+Universitas Potensi Utama menyediakan berbagai fasilitas modern
+untuk mendukung proses belajar, penelitian, serta pengembangan
+potensi mahasiswa.
+</p>
+
+</div>
+
+<div class="row fasilitas-row">
+
+<!-- Card 1 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="Lab-Komputer.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Laboratorium Komputer</h4>
+
+</div>
+</div>
+</div>
+
+<!-- Card 2 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="library.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Perpustakaan</h4>
+
+</div>
+</div>
+</div>
+
+<!-- Card 3 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="aula-gedung-B-768x484.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Aula Gedung B</h4>
+
+</div>
+</div>
+</div>
+
+<!-- Card 4 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="area-Mural.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Area Mural</h4>
+
+</div>
+</div>
+</div>
+
+<!-- Card 5 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="Lab-fisika.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Lab Fisika</h4>
+
+</div>
+</div>
+</div>
+
+<!-- Card 6 -->
+<div class="col-md-4">
+<div class="fasilitas-card">
+<img src="mushola.jpg" class="img-responsive">
+<div class="fasilitas-body">
+<h4>Musholla</h4>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="text-center" style="margin-top:50px;">
+
+<a href="home.html" class="btn-brosur">
+
+Lihat Semua Fasilitas
+<i class="fa fa-arrow-right"></i>
+
+</a>
+
+</div>
+</div>
+
+</section>
+<!-- Bagian FAQ Accordion -->
+<section id="faq">
+
+<div class="container">
+
+<div class="faq-title">
+
+
+
+<h2 class="main-title" style="color:#022349;">
+FAQ
+
+<span>PMB UNIVERSITAS POTENSI UTAMA</span>
+</h2>
+
+<div class="title-line" style="background:#022349;"></div>
+
+
+</div>
+<div class="panel-group" id="accordion">
+
+<!-- 1 -->
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq1">
+
+<i class="fa fa-question-circle"></i>
+Bagaimana cara mendaftar PMB Universitas Potensi Utama?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq1" class="panel-collapse collapse in">
+
+<div class="panel-body">
+
+Pendaftaran dilakukan secara online melalui website resmi PMB Universitas Potensi Utama dengan mengisi formulir, mengunggah dokumen persyaratan, dan menyelesaikan proses pembayaran biaya pendaftaran.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 2 -->
+
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq2">
+
+<i class="fa fa-question-circle"></i>
+
+Apa saja persyaratan yang harus dipersiapkan?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq2" class="panel-collapse collapse">
+
+<div class="panel-body">
+
+Calon mahasiswa menyiapkan ijazah atau surat keterangan lulus, pas foto terbaru, kartu identitas, serta dokumen pendukung lainnya sesuai ketentuan PMB.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 3 -->
+
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq3">
+
+<i class="fa fa-question-circle"></i>
+
+Program studi apa saja yang tersedia?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq3" class="panel-collapse collapse">
+
+<div class="panel-body">
+
+Universitas Potensi Utama memiliki berbagai program studi dari beberapa fakultas, mulai dari bidang teknologi informasi, bisnis, kesehatan, hingga ilmu sosial yang dapat dipilih sesuai minat calon mahasiswa.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 4 -->
+
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq4">
+
+<i class="fa fa-question-circle"></i>
+
+Apakah tersedia program beasiswa?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq4" class="panel-collapse collapse">
+
+<div class="panel-body">
+
+Ya. Universitas Potensi Utama menyediakan beberapa program beasiswa sesuai dengan ketentuan yang berlaku. Informasi lengkap dapat dilihat pada halaman Beasiswa.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 5 -->
+
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq5">
+
+<i class="fa fa-question-circle"></i>
+
+Bagaimana proses pembayaran biaya kuliah?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq5" class="panel-collapse collapse">
+
+<div class="panel-body">
+
+Pembayaran dapat dilakukan melalui bank yang bekerja sama dengan Universitas Potensi Utama sesuai petunjuk yang diberikan setelah proses pendaftaran selesai.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 6 -->
+
+<div class="panel panel-default panel-upu">
+
+<div class="panel-heading">
+
+<h4 class="panel-title">
+
+<a data-toggle="collapse" data-parent="#accordion" href="#faq6">
+
+<i class="fa fa-question-circle"></i>
+
+Bagaimana cara menghubungi Panitia PMB?
+
+</a>
+
+</h4>
+
+</div>
+
+<div id="faq6" class="panel-collapse collapse">
+
+<div class="panel-body">
+
+Calon mahasiswa dapat menghubungi Panitia PMB melalui nomor telepon, WhatsApp, email, atau datang langsung ke Kampus Universitas Potensi Utama pada jam kerja.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="text-center" style="margin-top:45px;">
+
+<a href="#" class="btn-lihat">
+
+Hubungi Panitia PMB
+
+<i class="fa fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer-upu">
+
+<div class="container">
+
+<div class="row">
+
+<!-- Logo -->
+<div class="col-md-4">
+
+<img src="pu.PNG" class="footer-logo">
+
+<h3>Universitas Potensi Utama</h3>
+
+<p>
+Membangun generasi unggul, inovatif,
+dan berdaya saing global melalui pendidikan,
+penelitian, serta pengabdian kepada masyarakat.
+</p>
+
+</div>
+
+<!-- Menu -->
+<div class="col-md-2">
+
+<h4>Navigasi</h4>
+
+<ul>
+
+<li><a href="#">Beranda</a></li>
+
+<li><a href="#">Profil</a></li>
+
+<li><a href="#">Program Studi</a></li>
+
+<li><a href="#">Fasilitas</a></li>
+
+<li><a href="#">FAQ</a></li>
+
+</ul>
+
+</div>
+
+<!-- PMB -->
+<div class="col-md-3">
+
+<h4>Pendaftaran</h4>
+
+<ul>
+
+<li><a href="#">Jalur Pendaftaran</a></li>
+
+<li><a href="#">Biaya Kuliah</a></li>
+
+<li><a href="#">Beasiswa</a></li>
+
+<li><a href="#">Download Brosur</a></li>
+
+<li><a href="#">Daftar Sekarang</a></li>
+
+</ul>
+
+</div>
+
+<!-- Kontak -->
+<div class="col-md-3">
+
+<h4>Hubungi Kami</h4>
+
+<p><i class="fa fa-map-marker"></i>
+Jl. K.L. Yos Sudarso KM.6,5 Medan</p>
+
+<p><i class="fa fa-phone"></i>
+(061) 6640525</p>
+
+<p><i class="fa fa-envelope"></i>
+info@potensi-utama.ac.id</p>
+
+<div class="footer-social">
+
+<a href="#"><i class="fa fa-facebook"></i></a>
+
+<a href="#"><i class="fa fa-instagram"></i></a>
+
+<a href="#"><i class="fa fa-youtube-play"></i></a>
+
+<a href="#"><i class="fa fa-whatsapp"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="text-center footer-copy">
+
+© 2026 Universitas Potensi Utama. All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+</body>
+</html>
