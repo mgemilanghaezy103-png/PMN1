@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMB Universitas Potensi Utama</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --warna-biru: #022349;       
+            --warna-merah: #d82400;      
+            --teks-gelap: #212529;
+            --warna-kuning: #ffc107;
+            --warna-putih: #fffffe;
+        }
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            color: var(--teks-gelap);
+        }
+
+        /* HERO BANNER */
+        .hero-banner {
+            background: linear-gradient(rgba(2, 35, 73, 0.4), rgba(2, 35, 73, 0.4)), url('gedung.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 130px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--warna-putih);
+        }
+        .hero-banner h1 {
+            font-weight: 800;
+            font-size: 42px;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        .hero-banner p {
+            font-size: 19px;
+            color: var(--warna-kuning);
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background-color: var(--warna-biru);
+            padding: 10px 0;
+            border-top: 4px solid var(--warna-kuning);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .navbar-custom .navbar-brand {
+            color: var(--warna-kuning) !important;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .navbar-custom .nav-link {
+            color: #f8f9fa !important;
+            font-weight: 600;
+            padding: 8px 16px !important;
+            transition: all 0.2s;
+        }
+        .navbar-custom .nav-link:hover {
+            color: var(--warna-kuning) !important;
+        }
+        .navbar-custom .nav-link.active {
+            color: white !important;
+            background-color: var(--warna-merah);
+            border-radius: 4px;
+        }
+
+        /* STRUKTUR SEKSI */
+        .seksi-halaman {
+            padding: 80px 0;
+            scroll-margin-top: 60px;
+        }
+        .bg-biru {
+            background-color: var(--warna-biru);
+            color: #ffffff;
+        }
+        .bg-putih {
+            background-color: #ffffff;
+            color: var(--teks-gelap);
+        }
+
+        /* JUDUL SEKSI */
+        .judul-seksi {
+            font-weight: bold;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .bg-biru .judul-seksi { color: #ffffff; }
+        .bg-putih .judul-seksi { color: var(--warna-biru); }
+
+        .sub-judul {
+            font-size: 15px;
+            margin-bottom: 40px;
+            color: #6c757d;
+        }
+        .bg-biru .sub-judul { color: #adb5bd; }
+
+        /* KARTU FAKULTAS */
+        .kartu-fakultas {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            color: var(--teks-gelap);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .kartu-fakultas .card-header {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            border-bottom: 1px solid #e0e0e0;
+            color: var(--warna-biru);
+            padding: 15px;
+        }
+
+        /* GAMBAR KAMPUS DI SAMPING */
+        .wrapper-gambar {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .wrapper-gambar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* JADWAL GELOMBANG */
+        .box-gelombang {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-top: 4px solid var(--warna-biru);
+            border-radius: 6px;
+            padding: 20px;
+            height: 100%;
+        }
+        .box-gelombang.aktif {
+            border-top-color: var(--warna-merah);
+            background-color: #fff9f8;
+        }
+
+        /* ALUR DAN SYARAT */
+        .list-alur {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list-alur li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+        }
+        .list-alur li::before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: var(--warna-merah);
+            font-size: 24px;
+            top: -4px;
+        }
+
+        .box-syarat {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 25px;
+        }
+
+        /* KUSTOMISASI TABS FASILITAS */
+        .nav-tabs-fasilitas {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            justify-content: center;
+        }
+        .nav-tabs-fasilitas .nav-link {
+            color: #f8f9fa !important;
+            font-weight: bold;
+            border: none !important;
+            padding: 12px 24px;
+            transition: all 0.3s;
+        }
+        .nav-tabs-fasilitas .nav-link.active {
+            color: var(--warna-kuning) !important;
+            background-color: transparent !important;
+            border-bottom: 3px solid var(--warna-kuning) !important;
+        }
+        #fasilitas-section .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        #fasilitas-section .card:hover {
+            transform: translateY(-5px);
+        }
+        #fasilitas-section img {
+            height: 180px;
+            object-fit: cover;
+        }
+        #fasilitas-section .card-body {
+            color: #333;
+            background-color: #ffffff;
+        }
+        #fasilitas-section h5 {
+            color: #022349;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* FORMULIR */
+        .sub-judul-form {
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffc107;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 5px;
+        }
+        .input-custom {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+        }
+        
+        .btn-submit {
+            background-color: var(--warna-merah);
+            color: white;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #b71c00;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SEKSI 1: HERO BANNER (HEADER) -->
+    <div class="hero-banner">
+        <div class="container">
+            <h1>Pendaftaran Mahasiswa Baru</h1>
+            <p class="mb-0">Selamat Datang di Portal PMB Universitas Potensi Utama</p>
+        </div>
+    </div>
+
+    <!-- NAVBAR STICKY -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="ujiweb.html">🎓 PMB UPU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuNavbar">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="ujiweb.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fakultas-section">Fakultas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#info-section">Jadwal & Syarat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fasilitas-section">Fasilitas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#pendaftaran-section">Form Pendaftaran</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEKSI 2: DAFTAR FAKULTAS (WARNA BIRU) -->
+    <section id="fakultas-section" class="seksi-halaman bg-biru">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 mx-auto">
+                    <h2 class="judul-seksi">Daftar Fakultas dan Program Studi</h2>
+                    <p class="sub-judul">Silakan pilih program studi yang sesuai dengan minat dan bakat Anda.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-5">
+                            <div class="wrapper-gambar shadow">
+                                <img src="penerimaan-reguler.jpg" alt="Gedung Universitas Potensi Utama">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <div class="card kartu-fakultas">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <span>Fakultas Teknik & Ilmu Komputer (FTIK)</span>
+                                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#jurusanFTIK">
+                                        Lihat Jurusan
+                                    </button>
+                                </div>
+                                <div class="collapse" id="jurusanFTIK">
+                                    <div class="card-body border-top">
+                                        <ul class="mb-0 ps-3">
+                                            <li class="mb-2">S1 - Teknik Informatika (Akreditasi Baik Sekali)</li>
+                                            <li class="mb-2">S1 - Sistem Informasi (Akreditasi Baik Sekali)</li>
+                                            <li class="mb-2">S1 - Rekayasa Perangkat Lunak (Akreditasi Baik)</li>
+                                            <li class="mb-2">S1 - Teknologi Informasi (Akreditasi Baik)</li>
+                                            <li>D3 - Manajemen Informatika (Akreditasi B)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card kartu-fakultas">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <span>Fakultas Bisnis & Humaniora (FBH)</span>
+                                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#jurusanFBH">
+                                        Lihat Jurusan
+                                    </button>
+                                </div>
+                                <div class="collapse" id="jurusanFBH">
+                                    <div class="card-body border-top">
+                                        <ul class="mb-0 ps-3">
+                                            <li class="mb-2">S1 - Manajemen (Akreditasi Baik Sekali)</li>
+                                            <li class="mb-2">S1 - Akuntansi (Akreditasi Baik Sekali)</li>
+                                            <li class="mb-2">S1 - Ekonomi Syariah (Akreditasi Baik)</li>
+                                            <li>S1 - Hubungan Internasional (Akreditasi B)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card kartu-fakultas">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <span>Fakultas Seni & Desain (FSD)</span>
+                                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#jurusanFSD">
+                                        Lihat Jurusan
+                                    </button>
+                                </div>
+                                <div class="collapse" id="jurusanFSD">
+                                    <div class="card-body border-top">
+                                        <ul class="mb-0 ps-3">
+                                            <li class="mb-2">S1 - Desain Komunikasi Visual (DKV) (Akreditasi B)</li>
+                                            <li>S1 - Desain Interior (Akreditasi Baik)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card kartu-fakultas">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <span>Fakultas Hukum, Psikologi & Pascasarjana</span>
+                                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#jurusanLain">
+                                        Lihat Jurusan
+                                    </button>
+                                </div>
+                                <div class="collapse" id="jurusanLain">
+                                    <div class="card-body border-top">
+                                        <ul class="mb-0 ps-3">
+                                            <li class="mb-2">S1 - Ilmu Hukum (Akreditasi Baik Sekali)</li>
+                                            <li class="mb-2">S1 - Psikologi (Akreditasi Baik)</li>
+                                            <li>S2 - Magister Sistem Informasi (Akreditasi Baik Sekali)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ================= TEMPAT 2 BROSUR DI BAWAH FAKULTAS ================= -->
+                    <div class="row g-4 mt-5">
+                        <div class="col-12 text-center mb-2">
+                            <h4 class="fw-bold" style="font-size: 20px; color: var(--warna-biru);">Brosur Informasi Fakultas & Fasilitas</h4>
+                            
+                        </div>
+                        
+                        <!-- Gambar Brosur 1 (Kiri) -->
+                        <div class="col-md-6">
+                            <div class="p-2 border rounded bg-white shadow-sm text-center">
+                                <img src="br1.jpg" class="img-fluid rounded" alt="Brosur Fakultas UPU Bagian 1" style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
+                            </div>
+                        </div>
+
+                        <!-- Gambar Brosur 2 (Kanan) -->
+                        <div class="col-md-6">
+                            <div class="p-2 border rounded bg-white shadow-sm text-center">
+                                <img src="br2.jpg" class="img-fluid rounded" alt="Brosur Fakultas UPU Bagian 2" style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ===================================================================== -->
+    </section>
+
+    <!-- SEKSI 3: JADWAL & SYARAT (WARNA PUTIH) -->
+    <section id="info-section" class="seksi-halaman bg-putih">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="judul-seksi">Informasi Pendaftaran</h2>
+                    <p class="sub-judul">Berikut adalah jadwal gelombang, alur pendaftaran, serta persyaratan berkas.</p>
+                    
+                    <h5 class="fw-bold mb-3" style="font-size: 16px; color: var(--warna-biru);">1. JADWAL GELOMBANG</h5>
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-4">
+                            <div class="box-gelombang">
+                                <span class="badge bg-secondary mb-2">Gelombang 1</span>
+                                <h5 class="fw-bold fs-6 text-dark">Januari - Maret 2026</h5>
+                                <p class="text-muted small mb-0">Pendaftaran Jalur Minat dan Bakat awal tahun (Ditutup).</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-gelombang aktif">
+                                <span class="badge bg-danger mb-2">Gelombang 2</span>
+                                <h5 class="fw-bold fs-6 text-dark">April - Juni 2026</h5>
+                                <p class="text-muted small mb-0">Pendaftaran Jalur Reguler sedang dibuka saat ini.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-gelombang">
+                                <span class="badge bg-dark mb-2">Gelombang 3</span>
+                                <h5 class="fw-bold fs-6 text-dark">Juli - Agustus 2026</h5>
+                                <p class="text-muted small mb-0">Pendaftaran gelombang akhir jika kuota belum terpenuhi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-5">
+                        <!-- ALUR -->
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-4" style="font-size: 16px; color: var(--warna-biru);">2. ALUR PENDAFTARAN</h5>
+                            <ul class="list-alur">
+                                <li>
+                                    <h6 class="fw-bold mb-1">Isi Formulir</h6>
+                                    <p class="text-muted small">Mengisi data diri lengkap pada formulir pendaftaran di bawah.</p>
+                                </li>
+                                <li>
+                                    <h6 class="fw-bold mb-1">Penyerahan Berkas</h6>
+                                    <p class="text-muted small">Menyerahkan atau mengunggah berkas syarat pendaftaran yang diminta.</p>
+                                </li>
+                                <li>
+                                    <h6 class="fw-bold mb-1">Ujian Seleksi</h6>
+                                    <p class="text-muted small">Mengikuti tes seleksi masuk kampus sesuai dengan jadwal masing-masing.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- SYARAT -->
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-4" style="font-size: 16px; color: var(--warna-biru);">3. SYARAT PENDAFTARAN</h5>
+                            <div class="box-syarat">
+                                <p class="mb-2 small">- Fotocopy / Scan Ijazah SMA/SMK sederajat atau Surat Keterangan Lulus.</p>
+                                <p class="mb-2 small">- Fotocopy / Scan Kartu Keluarga (KK) dan KTP.</p>
+                                <p class="mb-2 small">- Pasfoto terbaru ukuran 3x4 formal.</p>
+                                <hr>
+                                <p class="small text-muted mb-0">Informasi lebih lanjut hubungi panitia PMB: <br><strong>0812-3456-7890</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 4: FASILITAS KAMPUS (WARNA BIRU DENGAN TABS) -->
+    <section id="fasilitas-section" class="seksi-halaman bg-biru">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="judul-seksi">Fasilitas Kampus</h2>
+                <p class="sub-judul">Universitas Potensi Utama menyediakan berbagai fasilitas modern komprehensif untuk mendukung perkuliahan.</p>
+            </div>
+
+            <!-- Nav Tabs Kategori Fasilitas -->
+            <ul class="nav nav-tabs nav-tabs-fasilitas mb-4" id="kategoriFasilitas" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="umum-tab" data-bs-toggle="tab" data-bs-target="#umum-pane" type="button" role="tab" aria-controls="umum-pane" aria-selected="true">Fasilitas Umum</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lab-tab" data-bs-toggle="tab" data-bs-target="#lab-pane" type="button" role="tab" aria-controls="lab-pane" aria-selected="false">Laboratorium & Studio</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="praktik-tab" data-bs-toggle="tab" data-bs-target="#praktik-pane" type="button" role="tab" aria-controls="praktik-pane" aria-selected="false">Praktik Mandiri</button>
+                </li>
+            </ul>
+
+            <!-- Konten Tab -->
+            <div class="tab-content" id="kontenKategoriFasilitas">
+                
+                <!-- TAB 1: FASILITAS UMUM -->
+                <div class="tab-pane fade show active" id="umum-pane" role="tabpanel" aria-labelledby="umum-tab" tabindex="0">
+                    <div class="row g-4">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="aula-upu-2.jpg" class="card-img-top" alt="Aula Universitas">
+                                <div class="card-body">
+                                    <h5>Aula Universitas</h5>
+                                    <p class="small text-muted mb-0">Ruang pertemuan utama berskala besar untuk kegiatan seminar, wisuda, dan acara kampus.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="library.jpg" class="card-img-top" alt="Perpustakaan">
+                                <div class="card-body">
+                                    <h5>Perpustakaan</h5>
+                                    <p class="small text-muted mb-0">Perpustakaan terintegrasi dengan akses fisik literatur serta e-journal nasional & internasional.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="bioskop.jpg" class="card-img-top" alt="Bioskop Kampus">
+                                <div class="card-body">
+                                    <h5>Bioskop Kampus</h5>
+                                    <p class="small text-muted mb-0">Bioskop mini internal untuk penayangan media pembelajaran kreatif, edukasi, maupun hiburan sinema.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="mushola.jpg" class="card-img-top" alt="Mushollah">
+                                <div class="card-body">
+                                    <h5>Mushollah</h5>
+                                    <p class="small text-muted mb-0">Tempat ibadah yang bersih dan representatif untuk mendukung kenyamanan spiritual sivitas akademika.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="lift.jpg" class="card-img-top" alt="Lift / Elevator">
+                                <div class="card-body">
+                                    <h5>Lift / Elevator</h5>
+                                    <p class="small text-muted mb-0">Fasilitas penunjang mobilitas vertikal gedung kampus untuk kenyamanan operasional harian.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="area-Mural.jpg" class="card-img-top" alt="Area Mural">
+                                <div class="card-body">
+                                    <h5>Area Mural</h5>
+                                    <p class="small text-muted mb-0">Sudut kreativitas terbuka yang estetis dan modern bagi ekspresi seni serta ruang diskusi mahasiswa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LABORATORIUM & STUDIO -->
+                <div class="tab-pane fade" id="lab-pane" role="tabpanel" aria-labelledby="lab-tab" tabindex="0">
+                    <div class="row g-4">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="Lab-Komputer.jpg" class="card-img-top" alt="Lab Komputer">
+                                <div class="card-body">
+                                    <h5>Lab Komputer</h5>
+                                    <p class="small text-muted mb-0">Laboratorium rekayasa data & pemrograman yang dilengkapi unit perangkat komputer berspesifikasi mutakhir.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="studio.jpg" class="card-img-top" alt="Studio Film & Fotografi">
+                                <div class="card-body">
+                                    <h5>Studio Film & Fotografi</h5>
+                                    <p class="small text-muted mb-0">Studio produksi profesional khusus penunjang tata cahaya, rekam video, gambar, dan produksi media.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="podcast.jpg" class="card-img-top" alt="Podcast Studio">
+                                <div class="card-body">
+                                    <h5>Podcast Studio</h5>
+                                    <p class="small text-muted mb-0">Ruang isolasi akustik modern untuk produksi siaran suara digital serta media interaksi kreatif.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="internasioanl.jpg" class="card-img-top" alt="International Relation Lab">
+                                <div class="card-body">
+                                    <h5>International Relation Lab</h5>
+                                    <p class="small text-muted mb-0">Laboratorium simulasi diplomasi, negosiasi, dan konferensi meja bundar isu global kenegaraan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="lab-fisika.jpg" class="card-img-top" alt="Lab Fisika">
+                                <div class="card-body">
+                                    <h5>Lab Fisika</h5>
+                                    <p class="small text-muted mb-0">Fasilitas eksperimen dasar optik, kelistrikan, dan mekanika mekanis pendukung basis keilmuan teknik.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="microteaching.jpg" class="card-img-top" alt="Laboratorium Microteaching">
+                                <div class="card-body">
+                                    <h5>Laboratorium Microteaching</h5>
+                                    <p class="small text-muted mb-0">Ruang simulasi mengajar dengan cermin dua arah dan alat rekam evaluasi kompetensi tenaga pendidik.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: RUANG PRAKTIK MANDIRI -->
+                <div class="tab-pane fade" id="praktik-pane" role="tabpanel" aria-labelledby="praktik-tab" tabindex="0">
+                    <div class="row g-4">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="peradilan-semu.jpg" class="card-img-top" alt="Ruang Peradilan Semu">
+                                <div class="card-body">
+                                    <h5>Ruang Peradilan Semu</h5>
+                                    <p class="small text-muted mb-0">Ruang simulasi tata sidang hukum yang didesain serupa arsitektur otentik pengadilan negeri.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="investment.jpg" class="card-img-top" alt="Galeri Investasi">
+                                <div class="card-body">
+                                    <h5>Galeri Investasi</h5>
+                                    <p class="small text-muted mb-0">Pusat analisis data real-time pergerakan bursa efek untuk edukasi pasar modal praktis.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="incubator.jpg" class="card-img-top" alt="Ruang Inkubator Bisnis">
+                                <div class="card-body">
+                                    <h5>Ruang Inkubator Bisnis</h5>
+                                    <p class="small text-muted mb-0">Wadah akselerasi startup mahasiswa dari penyusunan ide bisnis hingga tahap komersialisasi nyata.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="mini-bank.jpg" class="card-img-top" alt="Mini Bank">
+                                <div class="card-body">
+                                    <h5>Mini Bank</h5>
+                                    <p class="small text-muted mb-0">Fasilitas simulasi layanan keuangan perbankan (teller & customer service) secara terstruktur.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 shadow">
+                                <img src="konseling.jpg" class="card-img-top" alt="Ruang Konseling">
+                                <div class="card-body">
+                                    <h5>Ruang Konseling</h5>
+                                    <p class="small text-muted mb-0">Ruang konsultasi psikologis yang privat dan nyaman untuk latihan wawancara maupun terapi psikologis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI 5: FORMULIR PENDAFTARAN (WARNA PUTIH) -->
+    <section id="pendaftaran-section" class="seksi-halaman bg-putih">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="judul-seksi" style="color: var(--warna-biru);">Formulir Pendaftaran</h2>
+                    <p class="sub-judul">Silakan isi formulir di bawah ini dengan data yang sebenar-benarnya.</p>
+                    
+                    <form id="formPendaftaran" onsubmit="event.preventDefault(); prosesSimpanData();">
+                        
+                        <div class="sub-judul-form" style="color: var(--warna-merah); border-bottom: 1px solid #dee2e6;">DATA CALON MAHASISWA</div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small">Nama Lengkap</label>
+                                <input type="text" class="form-control input-custom" placeholder="Nama sesuai ijazah" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">NIK (KTP / KK)</label>
+                                <input type="text" class="form-control input-custom" placeholder="16 digit nomor induk kependudukan" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">NISN</label>
+                                <input type="text" class="form-control input-custom" placeholder="Nomor induk siswa nasional">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Tempat Lahir</label>
+                                <input type="text" class="form-control input-custom" placeholder="Tempat lahir">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Tanggal Lahir</label>
+                                <input type="date" class="form-control input-custom">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small d-block mb-2">Jenis Kelamin</label>
+                                <div class="pt-2">
+                                    <div class="form-check form-check-inline me-3">
+                                        <input class="form-check-input" type="radio" name="gender" id="gL" value="L">
+                                        <label class="form-check-label small" for="gL">Laki-laki</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="gP" value="P">
+                                        <label class="form-check-label small" for="gP">Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sub-judul-form" style="color: var(--warna-merah); border-bottom: 1px solid #dee2e6;">PILIHAN JURUSAN</div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small">Pilihan Program Studi</label>
+                                <select class="form-select input-custom">
+                                    <option>S1 - Teknik Informatika</option>
+                                    <option>S1 - Sistem Informasi</option>
+                                    <option>S1 - Rekayasa Perangkat Lunak</option>
+                                    <option>S1 - Desain Komunikasi Visual (DKV)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Pilihan Kelas</label>
+                                <select class="form-select input-custom">
+                                    <option>Kelas Reguler A (Pagi)</option>
+                                    <option>Kelas Reguler B (Sore/Malam)</option>
+                                    <option>Kelas Eksekutif</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-submit shadow">Kirim Pendaftaran</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script Native -->
+    <script>
+        function prosesSimpanData() {
+            alert('Pendaftaran Anda berhasil dikirim. Terima kasih.');
+            document.getElementById('formPendaftaran').reset();
+        }
+    </script>
+</body>
+</html>
